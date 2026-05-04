@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://j0w4kfosemm"]
 
+[ext_resource type="AudioStream" uid="uid://c758vym7kto3b" path="res://04 a poem without a tongue no drms.mp3" id="1_0xm2m"]
 [ext_resource type="Shader" uid="uid://dgcy6ssqeqitq" path="res://testadistshader.gdshader" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://dw8ro2v70tnl7" path="res://audioplayer.gd" id="2_h2yge"]
+[ext_resource type="AudioStream" uid="uid://dnee343vihxxl" path="res://Bent nálgast - XXX Rottweiler hundar.mp3" id="3_1bvp3"]
 
 [sub_resource type="Environment" id="Environment_7dm0k"]
-volumetric_fog_density = 0.2456
+background_energy_multiplier = 0.1
+glow_intensity = 8.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
 volumetric_fog_emission_energy = 50.5
 
 [sub_resource type="BoxMesh" id="BoxMesh_0xm2m"]
@@ -11,29 +17,65 @@ volumetric_fog_emission_energy = 50.5
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h2yge"]
 render_priority = 0
 shader = ExtResource("1_ig7tw")
-shader_parameter/max_dist = 50.0
-shader_parameter/min_dist = 10.0
-shader_parameter/res_high = 16.0
-shader_parameter/res_low = 2.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h2yge"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_1bvp3"]
+radius = 0.01
+height = 0.01
 
 [node name="Node3D" type="Node3D" unique_id=958781978]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4047704, 2.3841858e-07, 0.7126266)
 
+[node name="04APoemWithoutATongueNoDrms" type="AudioStreamPlayer" parent="." unique_id=438621472 node_paths=PackedStringArray("red_light", "blue_light", "white_light")]
+stream = ExtResource("1_0xm2m")
+script = ExtResource("2_h2yge")
+red_light = NodePath("../SpotLight3D2")
+blue_light = NodePath("../SpotLight3D")
+white_light = NodePath("../SpotLight3D3")
+
+[node name="BentNálgastXxxRottweilerHundar" type="AudioStreamPlayer" parent="." unique_id=1362180916 node_paths=PackedStringArray("red_light", "blue_light", "white_light")]
+stream = ExtResource("3_1bvp3")
+autoplay = true
+script = ExtResource("2_h2yge")
+red_light = NodePath("../SpotLight3D2")
+blue_light = NodePath("../SpotLight3D")
+white_light = NodePath("../SpotLight3D3")
+
 [node name="FogVolume" type="FogVolume" parent="." unique_id=792150557]
+transform = Transform3D(3.4460473, -0.24180721, 1.8462259, 3.303658, 1.2760034, -0.58129764, -3.5558128, 0.95117503, 1.2491587, -0.062340975, 0.32896963, 0.24522483)
+size = Vector3(2, 2.515625, 2)
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=131574039]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16854858, 0, 0.6723975)
-environment = SubResource("Environment_7dm0k")
-
-[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D" unique_id=458700561]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35926813, 0, -0.0830245)
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=458700561]
+transform = Transform3D(0.16042097, -0.039174967, 0.9862709, 0.030478012, 0.9989323, 0.034720507, -0.98657805, 0.024489682, 0.16144368, 0.8907182, 0, 1.5108865)
+light_color = Color(5.583167e-06, 0, 0.98151857, 1)
 light_energy = 2.762
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="Camera3D" unique_id=1472001541]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4901591, 0, -0.4148358)
+[node name="SpotLight3D2" type="SpotLight3D" parent="." unique_id=1472001541]
+transform = Transform3D(0.28137016, 0, 0.9595993, 0, 1, 0, -0.9595993, 0, 0.28137016, 0.41764784, 0, 0.84637725)
 light_color = Color(2.20409, 0, 0, 1)
 
+[node name="SpotLight3D3" type="SpotLight3D" parent="." unique_id=1648293148]
+transform = Transform3D(-0.6146295, 0, 0.7888159, 0, 1, 0, -0.7888159, 0, -0.6146295, 2.7984853, -2.1965458, -1.3964618)
+light_color = Color(2.204, 2.204, 2.204, 1)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=131574039]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16854858, 0, 2.2437568)
+environment = SubResource("Environment_7dm0k")
+
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=434539734]
-transform = Transform3D(0.99910307, 0.030911773, 0.028942913, 0, 0.68347764, -0.7299714, -0.042346507, 0.7293167, 0.6828646, 0.06073475, -0.677917, -1.8774441)
+transform = Transform3D(0.45609635, 0.85069287, -0.2613387, -0.5193128, 0.015939116, -0.8544358, -0.7226969, 0.5254215, 0.44904542, -0.41571188, -0.031193256, -0.37050563)
+visible = false
 mesh = SubResource("BoxMesh_0xm2m")
 surface_material_override/0 = SubResource("ShaderMaterial_h2yge")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1092500438]
+transform = Transform3D(2.0410733, 0, 0, 0, 1, 0, 0, 0, 1.9797773, 0, 0, 0)
+visible = false
+amount = 544
+explosiveness = 0.35
+randomness = 0.2
+process_material = SubResource("ParticleProcessMaterial_h2yge")
+draw_pass_1 = SubResource("SphereMesh_1bvp3")

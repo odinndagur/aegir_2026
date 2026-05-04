@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dnee343vihxxl"
+path="res://.godot/imported/Bent nálgast - XXX Rottweiler hundar.mp3-a92cc99939212ac6d597821573ec4342.mp3str"
+
+[deps]
+
+source_file="res://Bent nálgast - XXX Rottweiler hundar.mp3"
+dest_files=["res://.godot/imported/Bent nálgast - XXX Rottweiler hundar.mp3-a92cc99939212ac6d597821573ec4342.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
